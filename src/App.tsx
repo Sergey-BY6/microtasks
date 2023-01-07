@@ -1,26 +1,27 @@
 import React from 'react';
 import './App.css';
-import {Header} from './site/Header';
-import {Body} from './site/Body';
-import {Footer} from './site/Footer';
-import {NewComponent} from './NewComponent/NewComponent';
+import {Button} from './components/Button';
+
 
 function App() {
 
-    const students = [
-    {id: 1, name: "Ann", age: 25},
-    {id: 2, name: "Djon", age: 28},
-    {id: 3, name: "Maria", age: 30},
-    ]
+    const Buttton1Foo = (subscriber: string, age: number) => {
+        console.log(subscriber, age)
+    }
+    const Buttton2Foo = (subscriber: string) => {
+        console.log(subscriber)
+    }
+    const Buttton3Foo = () => {
+        console.log("Im stupid Buttton")
+    }
 
     return (
-        <div>
-            <Header title={'New Header'}/>
-            <Body titleForBody={'New Body'}/>
-            <Footer titleForFooter={'New Footer'}/>
-            <NewComponent students={students}/>
-        </div>
+        <div className="App">
+            <Button name={"MyYouTubeChannel-1"} callBack={()=> Buttton1Foo("Im Vasia", 21)}/>
+            <Button name={"MyYouTubeChannel-2"} callBack={()=> Buttton2Foo("Im Ivan")}/>
+            <Button name={"Im stupid Buttton"} callBack={Buttton3Foo}/>
 
+        </div>
     );
 }
 
