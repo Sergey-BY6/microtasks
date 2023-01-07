@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Header} from './site/Header';
+import {Body} from './site/Body';
+import {Footer} from './site/Footer';
+import {NewComponent} from './NewComponent/NewComponent';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const students = [
+    {id: 1, name: "Ann", age: 25},
+    {id: 2, name: "Djon", age: 28},
+    {id: 3, name: "Maria", age: 30},
+    ]
+
+    return (
+        <div>
+            <Header title={'New Header'}/>
+            <Body titleForBody={'New Body'}/>
+            <Footer titleForFooter={'New Footer'}/>
+            <NewComponent students={students}/>
+        </div>
+
+    );
 }
 
 export default App;
+
