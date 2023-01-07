@@ -1,27 +1,65 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import {Button} from './components/Button';
+import {NewComponent} from './components/NewComponent';
+
+
+export type FilterType = "All" | "RUBLS" | "Dollars"
 
 
 function App() {
 
-    const Buttton1Foo = (subscriber: string, age: number) => {
-        console.log(subscriber, age)
+    const [money, setMoney] = useState([
+        {banknots: 'Dollars', value: 100, number: ' a1234567890'},
+        {banknots: 'Dollars', value: 50, number: ' z1234567890'},
+        {banknots: 'RUBLS', value: 100, number: ' w1234567890'},
+        {banknots: 'Dollars', value: 100, number: ' e1234567890'},
+        {banknots: 'Dollars', value: 50, number: ' c1234567890'},
+        {banknots: 'RUBLS', value: 100, number: ' r1234567890'},
+        {banknots: 'Dollars', value: 50, number: ' x1234567890'},
+        {banknots: 'RUBLS', value: 50, number: ' v1234567890'},
+    ])
+
+    let currentMany = money
+    let [filter, setFilter] = useState<FilterType>('All')
+
+
+    const onClickFilterHandler = (nameButton: FilterType) => {
+        setFilter(nameButton)
     }
-    const Buttton2Foo = (subscriber: string) => {
-        console.log(subscriber)
+
+
+    if (filter === 'RUBLS') {
+        currentMany = money.filter(el => el.banknots === 'RUBLS')
     }
-    const Buttton3Foo = () => {
-        console.log("Im stupid Buttton")
+    if (filter === 'Dollars') {
+        currentMany = money.filter(el => el.banknots === 'Dollars')
     }
+
 
     return (
-        <div className="App">
-            <Button name={"MyYouTubeChannel-1"} callBack={()=> Buttton1Foo("Im Vasia", 21)}/>
-            <Button name={"MyYouTubeChannel-2"} callBack={()=> Buttton2Foo("Im Ivan")}/>
-            <Button name={"Im stupid Buttton"} callBack={Buttton3Foo}/>
-
+        <div>
+            <NewComponent currentMany={currentMany} callBack={onClickFilterHandler}/>
         </div>
+        // <div>
+        //     <ul>
+        //         {currentMany.map((el, index) => {
+        //             return (
+        //                 <li key={index}>
+        //                     <span>{el.banknots}</span>
+        //                     <span>{el.value}</span>
+        //                     <span>{el.number}</span>
+        //                 </li>
+        //             )
+        //         })}
+        //     </ul>
+        //     <div style={{marginLeft: '35px'}}>
+        //         <button onClick={() => onClickFilterHandler('All')}>All</button>
+        //         <button onClick={() => onClickFilterHandler('RUBLS')}>RUBLS</button>
+        //         <button onClick={() => onClickFilterHandler('Dollars')}>Dollars</button>
+        //     </div>
+        //
+        // </div>
+
     );
 }
 
