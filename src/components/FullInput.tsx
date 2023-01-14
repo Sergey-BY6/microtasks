@@ -14,6 +14,7 @@ export const FullInput: React.FC<FullInputType> = (props) => {
         setTitle(event.currentTarget.value)
     }
 
+
  const onClickButtonHandler = () => {
         props.addMessage(title)
      setTitle('')
